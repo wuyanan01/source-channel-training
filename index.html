@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>来源 & 购买渠道 — 新人培训手册</title>
+<style>
+  :root {
+    --primary: #1a73e8;
+    --primary-light: #e8f0fe;
+    --danger: #d93025;
+    --danger-light: #fce8e6;
+    --warning: #f9ab00;
+    --warning-light: #fef7e0;
+    --success: #188038;
+    --success-light: #e6f4ea;
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #202124;
+    --text-secondary: #5f6368;
+    --border: #e0e0e0;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,.1);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    display: flex;
+  }
+
+  /* ===== 侧边栏导航 ===== */
+  nav.sidebar {
+    position: fixed; left:0; top:0; bottom:0;
+    width: 270px;
+    background: #1e293b;
+    color: #e2e8f0;
+    overflow-y: auto;
+    z-index: 100;
+    scrollbar-width: thin;
+  }
+  nav.sidebar .logo {
+    padding: 24px 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    background: rgba(255,255,255,.03);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    display: flex; align-items: center; gap: 10px;
+  }
+  nav.sidebar .logo .icon { font-size: 1.5rem; }
+  nav.sidebar ul { list-style: none; padding: 12px 0; }
+  nav.sidebar li a {
+    display: block;
+    padding: 9px 24px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: .9rem;
+    transition: all .15s;
+    border-left: 3px solid transparent;
+  }
+  nav.sidebar li a:hover { color:#fff; background:rgba(255,255,255,.04); }
+  nav.sidebar li a.active { color:#fff; background:rgba(26,115,232,.2); border-left-color:#60a5fa; }
+  nav.sidebar .section-title {
+    padding: 16px 24px 6px;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #64748b;
+    font-weight: 700;
+  }
+
+  /* ===== 主内容区 ===== */
+  main {
+    margin-left: 270px;
+    flex: 1;
+    max-width: 1100px;
+    padding: 32px 40px 80px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #1a73e8 100%);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 48px 44px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.04);
+  }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; position:relative; z-index:1; }
+  .hero p  { font-size: 1.05rem; opacity: .85; position:relative; z-index:1; }
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,.2);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: .8rem;
+    margin-bottom: 14px;
+    position:relative; z-index:1;
+  }
+
+  /* ===== 章节标题 ===== */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin: 44px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-header .part-badge {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 800; font-size: .75rem;
+    padding: 4px 12px;
+    border-radius: 6px;
+    letter-spacing: .5px;
+  }
+  .section-header h2 { font-size: 1.4rem; }
+  .subsection-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 28px 0 12px;
+    color: #1e3a5f;
+    padding-left: 12px;
+    border-left: 4px solid var(--primary);
+  }
+
+  /* ===== 卡片 ===== */
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .card p, .card li { color: var(--text-secondary); font-size: .92rem; }
+
+  /* ===== 来源 & 渠道 定义卡片 ===== */
+  .definition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .def-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    padding: 20px 22px;
+    border-left: 5px solid var(--primary);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .def-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .def-card.retail    { border-left-color: var(--success); }
+  .def-card.demo      { border-left-color: var(--warning); }
+  .def-card.refurb    { border-left-color: #6366f1; }
+  .def-card.bs        { border-left-color: var(--danger); }
+  .def-card.replacement { border-left-color: #0ea5e9; }
+  .def-card.rights    { border-left-color: #f97316; }
+  .def-card h4 { font-size: 1rem; margin-bottom: 4px; }
+  .def-card .en { font-size: .78rem; color: var(--text-secondary); margin-bottom: 6px; }
+  .def-card p  { font-size: .88rem; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ===== 渠道定义 ===== */
+  .channel-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    padding: 20px 22px;
+    border-top: 4px solid var(--primary);
+    margin-bottom: 12px;
+  }
+  .channel-card.cn      { border-top-color: #dc2626; }
+  .channel-card.hmt     { border-top-color: #7c3aed; }
+  .channel-card.other   { border-top-color: #f59e0b; }
+  .channel-card.locked  { border-top-color: #000; }
+
+  /* ===== 查询方法 ===== */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .method-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    padding: 22px;
+    text-align: center;
+  }
+  .method-card .method-num {
+    display: inline-flex;
+    align-items:center; justify-content:center;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 800; font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .method-card h4 { margin-bottom: 6px; }
+  .method-card p  { font-size: .88rem; color: var(--text-secondary); }
+
+  /* ===== 表格 ===== */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: .9rem;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .info-table thead { background: #1e3a5f; color: #fff; }
+  .info-table th { padding: 12px 16px; text-align: left; font-weight: 600; }
+  .info-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .info-table tbody tr { background: #fff; }
+  .info-table tbody tr:nth-child(even) { background: #f8fafc; }
+  .info-table tbody tr:hover { background: #e8f0fe; }
+  .info-table code {
+    background: #f1f5f9; padding: 2px 8px;
+    border-radius: 4px; font-size: .85rem;
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+    font-weight: 600;
+  }
+
+  /* ===== 警示框 ===== */
+  .alert {
+    padding: 14px 20px;
+    border-radius: var(--radius-sm);
+    margin: 14px 0;
+    font-size: .9rem;
+  }
+  .alert.alert-warning { background: var(--warning-light); border: 1px solid #fdd663; }
+  .alert.alert-danger  { background: var(--danger-light);  border: 1px solid #f5b0aa; }
+  .alert.alert-info    { background: var(--primary-light); border: 1px solid #a8c7fa; }
+  .alert.alert-success { background: var(--success-light); border: 1px solid #81c995; }
+  .alert strong { display: block; margin-bottom: 4px; }
+
+  /* ===== 易错点 ===== */
+  .pitfall {
+    background: #fff7ed;
+    border: 1px solid #fdba74;
+    border-left: 5px solid #ea580c;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+  .pitfall h4 { color: #c2410c; margin-bottom: 6px; font-size: .95rem; }
+  .pitfall ul { margin-left: 18px; color: #9a3412; font-size: .88rem; }
+
+  /* ===== 流程图/步骤 ===== */
+  .steps {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin: 14px 0 20px;
+  }
+  .step {
+    flex: 1; min-width: 180px;
+    background: var(--card-bg);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    padding: 18px;
+    text-align: center;
+    position: relative;
+  }
+  .step .step-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: inline-flex; align-items:center; justify-content:center;
+    font-weight: 700; font-size: .85rem;
+    margin-bottom: 8px;
+  }
+  .step::after {
+    content: '→';
+    position: absolute;
+    right: -18px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .step:last-child::after { display: none; }
+
+  /* ===== 标签 ===== */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: .78rem;
+    font-weight: 600;
+    margin: 2px;
+  }
+  .tag-red    { background: #fce8e6; color: #c5221f; }
+  .tag-green  { background: #e6f4ea; color: #137333; }
+  .tag-blue   { background: #e8f0fe; color: #1967d2; }
+  .tag-orange { background: #fff7ed; color: #c2410c; }
+  .tag-purple { background: #f3e8fd; color: #7c3aed; }
+  .tag-gray   { background: #f1f3f4; color: #5f6368; }
+
+  /* ===== 练习卡片 ===== */
+  .quiz-card {
+    background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+    border: 2px dashed #93c5fd;
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin: 16px 0;
+  }
+  .quiz-card h4 { color: #1e40af; margin-bottom: 8px; }
+  .quiz-card .answer {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #fff;
+    border-radius: var(--radius-sm);
+    border: 1px solid #93c5fd;
+    display: none;
+  }
+  .quiz-card .show-answer {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: .88rem;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    text-align: center;
+    padding: 32px;
+    color: var(--text-secondary);
+    font-size: .85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 860px) {
+    nav.sidebar { display: none; }
+    main { margin-left: 0; padding: 20px 16px 60px; }
+    .hero { padding: 28px 24px; }
+    .hero h1 { font-size: 1.5rem; }
+    .definition-grid, .method-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; }
+    .step::after { content: '↓'; right: 50%; top: auto; bottom: -24px; transform: translateX(50%); }
+  }
+
+  /* 打印样式 */
+  @media print {
+    nav.sidebar { display: none; }
+    main { margin-left: 0; }
+    .card, .def-card, .channel-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== 侧边栏 ==================== -->
+<nav class="sidebar" id="sidebar">
+  <div class="logo">
+    <span class="icon">📱</span>
+    <span>来源 & 购买渠道</span>
+  </div>
+  <ul>
+    <li><div class="section-title">概述</div></li>
+    <li><a href="#hero" class="active">首页概览</a></li>
+    <li><a href="#summary">课程总览</a></li>
+
+    <li><div class="section-title">PART 1 — 苹果</div></li>
+    <li><a href="#apple-methods">查询方法</a></li>
+    <li><a href="#apple-source">来源识别</a></li>
+    <li><a href="#apple-source-detail">来源详解</a></li>
+    <li><a href="#apple-channel">购买渠道</a></li>
+    <li><a href="#apple-channel-detail">渠道详解</a></li>
+    <li><a href="#apple-pitfalls">易错点总结</a></li>
+
+    <li><div class="section-title">PART 2 — 安卓</div></li>
+    <li><a href="#android-methods">查询方法</a></li>
+    <li><a href="#android-source">来源识别</a></li>
+    <li><a href="#android-channel">购买渠道</a></li>
+
+    <li><div class="section-title">巩固练习</div></li>
+    <li><a href="#quiz-source">来源练习</a></li>
+    <li><a href="#quiz-channel">渠道练习</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== 主内容 ==================== -->
+<main>
+
+<!-- Hero -->
+<div class="hero" id="hero">
+  <div class="badge">📖 新人培训手册 v1.29</div>
+  <h1>来源 & 购买渠道</h1>
+  <p>掌握手机设备来源与购买渠道的识别方法 — Save Money. Save the World.</p>
+</div>
+
+<!-- ===== 课程总览 ===== -->
+<div class="card" id="summary">
+  <h3>📋 课程总览</h3>
+  <p>本课程分为两大部分，帮你快速掌握识别手机<b>来源</b>（这台设备从哪里来）和<b>购买渠道</b>（这台设备在哪个地区销售）的核心技能。</p>
+
+  <table class="info-table" style="margin-top:16px;">
+    <thead>
+      <tr><th>部分</th><th style="width:30%">内容</th><th>覆盖知识点</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag tag-blue">PART 1</span></td>
+        <td><b>苹果查询方法</b></td>
+        <td>爬虫/公众号查询、型号解读、来源判定（零售机/展示机/官翻机/BS机/官换机/权益机）、购买渠道判定（国行/港澳台/其他版本/有锁）</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-green">PART 2</span></td>
+        <td><b>安卓查询方法</b></td>
+        <td>爬虫/公众号查询、后壳识别、系统特征、展示机 & 官翻机判定、国行 & 其他版本区分</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== 术语定义 ===== -->
+<div class="section-header">
+  <span class="part-badge">基础</span>
+  <h2>核心术语定义</h2>
+</div>
+
+<div class="definition-grid">
+  <div class="def-card retail">
+    <h4>🏪 零售机</h4>
+    <div class="en">Retail Unit</div>
+    <p>设备来源为正常渠道的零售机器，享有完整官方保修。</p>
+  </div>
+  <div class="def-card demo">
+    <h4>📱 展示机</h4>
+    <div class="en">Demo / Display Unit</div>
+    <p>又称演示机、样机。向消费者展示产品，专门放置在展台上提供试用，功能使用有一定限制。</p>
+  </div>
+  <div class="def-card refurb">
+    <h4>🔧 官翻机</h4>
+    <div class="en">Official Refurbished</div>
+    <p>官方翻新的机器，经厂商重新检测、维修后销售。</p>
+  </div>
+  <div class="def-card bs">
+    <h4>⚠️ BS 机</h4>
+    <div class="en">BS / Resource Unit</div>
+    <p>也称资源机、富士康机。非苹果官方正常渠道销售的设备，<b>不享有保修</b>。</p>
+  </div>
+  <div class="def-card replacement">
+    <h4>🔄 官换机</h4>
+    <div class="en">Service Replacement</div>
+    <p>厂商为消费者更换一部全新的设备，作为保修期内故障设备的替代。</p>
+  </div>
+  <div class="def-card rights">
+    <h4>📄 权益机</h4>
+    <div class="en">Rights Unit</div>
+    <p>非官方零售渠道流出的苹果设备，<b>不享有保修</b>。</p>
+  </div>
+</div>
+
+<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-bottom: 20px;">
+  <div class="channel-card cn">
+    <h4>🇨🇳 国行</h4>
+    <p>中国大陆地区销售的版本。不同地区版本在软件功能、硬件配置、保修政策上可能有所不同。</p>
+  </div>
+  <div class="channel-card hmt">
+    <h4>🇭🇰🇲🇴 港澳台</h4>
+    <p>港澳台地区（香港、澳门、台湾）销售的版本。</p>
+  </div>
+  <div class="channel-card other">
+    <h4>🌍 其他版本</h4>
+    <p>非国行 & 非港澳台版本统一归为"其他版本"，国际上有美版、日版、韩版、欧版、亚太版等。</p>
+  </div>
+  <div class="channel-card locked">
+    <h4>🔒 其他版本 - 有锁</h4>
+    <p>设备有网络锁，属于海外运营商的<b>合约机</b>，需解锁后才能在国内正常使用。</p>
+  </div>
+</div>
+
+
+<!-- ==================== PART 1: 苹果 ==================== -->
+<div class="section-header" id="apple-methods">
+  <span class="part-badge">PART 1</span>
+  <h2>苹果 — 查询方法</h2>
+</div>
+
+<div class="method-grid">
+  <div class="method-card">
+    <div class="method-num">1</div>
+    <h4>爬虫 / 公众号 查询</h4>
+    <p>通过专业查询工具（爬虫系统）或微信公众号进行设备信息查询，获取设备来源和购买渠道数据。</p>
+  </div>
+  <div class="method-card">
+    <div class="method-num">2</div>
+    <h4>关于本机 → 型号</h4>
+    <p>打开 iPhone「设置 → 通用 → 关于本机」，查看<b>型号号码</b>：<br>
+    <b>第一位字母</b> → 判断来源<br>
+    <b>斜杠前两位字母</b> → 判断购买渠道</p>
+  </div>
+</div>
+
+<div class="alert alert-info">
+  <strong>💡 关键提示</strong>
+  两种方法应结合使用、交叉验证。当爬虫/官网无法查询到购买渠道时，以型号号码对应渠道为准。
+</div>
+
+
+<!-- 苹果来源 -->
+<div class="section-header" id="apple-source">
+  <span class="part-badge">PART 1</span>
+  <h2>苹果 — 来源识别</h2>
+</div>
+
+<div class="subsection-title">型号第一位字母 → 来源对照表</div>
+
+<table class="info-table">
+  <thead>
+    <tr><th style="width:15%">型号首位</th><th style="width:25%">来源</th><th>说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>M</code></td><td><span class="tag tag-green">零售机</span></td><td>正常零售渠道购买的全新设备</td></tr>
+    <tr><td><code>N</code></td><td><span class="tag tag-blue">官换机</span></td><td>保修期内由官方更换的设备</td></tr>
+    <tr><td><code>F</code></td><td><span class="tag tag-purple">权益机</span></td><td>非官方零售渠道流出（原为官翻机标识）</td></tr>
+    <tr><td><code>3</code></td><td><span class="tag tag-orange">展示机</span></td><td>店内展示用途的设备</td></tr>
+    <tr><td><code>5</code></td><td><span class="tag tag-orange">展示机</span></td><td>店内展示用途的设备（另一种型号编码）</td></tr>
+  </tbody>
+</table>
+
+<div class="card">
+  <h3>🔧 官翻机</h3>
+  <p>苹果官方翻新机的判定不通过型号首位字母，需通过爬虫/公众号查询进行确认。</p>
+</div>
+
+<!-- 来源详解 -->
+<div class="subsection-title" id="apple-source-detail">来源 — 易错点详解</div>
+
+<div class="pitfall">
+  <h4>⚠️ BS 机 判定特征</h4>
+  <ul>
+    <li>在<b>官网或爬虫</b>查询激活日期/购买日期显示为 <b>197X 年</b></li>
+    <li>爬虫查询直接标注为 <b>BS 机</b></li>
+    <li>官网查询与爬虫查询结果可能不一致，需交叉验证</li>
+  </ul>
+</div>
+
+<div class="alert alert-warning">
+  <strong>📌 判责要点</strong>
+  BS 机是判责中的高频易错点。当爬虫显示 BS 机但官网显示正常时，以<b>爬虫结果为准</b>。请务必记住 197X 年这个关键特征！
+</div>
+
+
+<!-- 苹果购买渠道 -->
+<div class="section-header" id="apple-channel">
+  <span class="part-badge">PART 1</span>
+  <h2>苹果 — 购买渠道</h2>
+</div>
+
+<div class="subsection-title">型号斜杠前两位字母 → 购买渠道对照表</div>
+
+<table class="info-table">
+  <thead>
+    <tr><th style="width:20%">型号代码</th><th style="width:25%">购买渠道</th><th>说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>CH</code></td><td><span class="tag tag-red">国行</span></td><td>中国大陆版本</td></tr>
+    <tr><td><code>J</code></td><td><span class="tag tag-orange">日版</span></td><td>日本版本（归类为其他版本）</td></tr>
+    <tr><td><code>LL</code></td><td><span class="tag tag-orange">美版</span></td><td>美国版本（归类为其他版本）</td></tr>
+    <tr><td><code>KH</code></td><td><span class="tag tag-orange">韩版</span></td><td>韩国版本（归类为其他版本）</td></tr>
+    <tr><td><code>TA</code></td><td><span class="tag tag-purple">港澳台版</span></td><td>台湾/香港/澳门版本</td></tr>
+    <tr><td><code>ZP / ZA</code></td><td><span class="tag tag-purple">可能为港澳台版</span></td><td>也可能是港澳台版本（详情查看小问号确认）</td></tr>
+  </tbody>
+</table>
+
+<div class="card" id="apple-channel-detail">
+  <h3>📋 购买渠道判定规则</h3>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <p><b>优先看爬虫</b><br>爬虫/公众号查询的购买渠道结果优先采用</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <p><b>型号兜底</b><br>爬虫无法查询时，按型号号码对应渠道勾选</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <p><b>不一致时</b><br>型号与爬虫不符→按爬虫结果，同时勾选「主板-其它维修特征」</p>
+    </div>
+  </div>
+</div>
+
+<!-- 有锁 -->
+<div class="subsection-title" id="apple-pitfalls">🔒 其他版本 — 有锁（高频易错）</div>
+
+<div class="pitfall">
+  <h4>⚠️ "有锁"判定双条件（满足任一即判为有锁）</h4>
+  <ul>
+    <li>① 爬虫或公众号查询<b>网络锁状态</b>为"有锁"</li>
+    <li>② 关于本机 → 运营商锁显示 <b>"SIM 卡已锁"</b> 或 <b>"SIM 卡限制"</b></li>
+  </ul>
+</div>
+
+<div class="alert alert-danger">
+  <strong>⚡ 优先级规则</strong>
+  其他版本-有锁 的判定优先级最高。当设备同时满足多个渠道特征时，<b>有锁 &gt; 国行/港澳台/其他版本</b>。
+</div>
+
+
+<!-- ==================== PART 2: 安卓 ==================== -->
+<div class="section-header" id="android-methods">
+  <span class="part-badge">PART 2</span>
+  <h2>安卓 — 查询方法</h2>
+</div>
+
+<div class="method-grid">
+  <div class="method-card">
+    <div class="method-num">1</div>
+    <h4>爬虫 / 公众号 查询</h4>
+    <p>与苹果查询方式相同，通过专业查询工具获取设备信息。</p>
+  </div>
+  <div class="method-card">
+    <div class="method-num">2</div>
+    <h4>查看后壳</h4>
+    <p><b>来源</b> → 看后壳是否刻有字母标识（M、Demo、NOT FOR SALE 等）<br>
+    <b>购买渠道</b> → 看后壳是否有 CE 标识、垃圾桶标识</p>
+  </div>
+  <div class="method-card">
+    <div class="method-num">3</div>
+    <h4>查看系统</h4>
+    <p><b>来源</b> → 桌面是否有「小米演示」「Retail Demo」等演示APP<br>
+    <b>购买渠道</b> → 是否预装谷歌套件</p>
+  </div>
+</div>
+
+
+<!-- 安卓来源 -->
+<div class="section-header" id="android-source">
+  <span class="part-badge">PART 2</span>
+  <h2>安卓 — 来源识别</h2>
+</div>
+
+<div class="subsection-title">🔴 展示机判定特征（满足任一即为展示机）</div>
+
+<table class="info-table">
+  <thead>
+    <tr><th style="width:10%">序号</th><th>判定条件</th><th style="width:30%">典型案例</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>①</td><td>后壳刻有 <b>"M"</b> 字样</td><td><b>三星</b>展示机特征</td></tr>
+    <tr><td>②</td><td>后壳刻有 <b>"NOT FOR SALE"</b></td><td><b>华为/荣耀</b>展示机特征</td></tr>
+    <tr><td>③</td><td>后壳刻有 <b>"Demo"</b> 字样</td><td>通用展示机标记</td></tr>
+    <tr><td>④</td><td>官网/公众号查询显示 <b>"样机"、"演示用机"</b></td><td>查询结果直接标注</td></tr>
+    <tr><td>⑤</td><td>爬虫查询显示为<b>展示机</b></td><td>爬虫系统直接判定</td></tr>
+    <tr><td>⑥</td><td>系统内有<b>"小米演示"、"Retail Demo"</b> 等APP</td><td>桌面可见演示应用</td></tr>
+  </tbody>
+</table>
+
+<div class="subsection-title">🟣 官翻机判定特征（三星）</div>
+
+<div class="card">
+  <p>三星后壳刻有以下任一字母即为<b>官翻机</b>：</p>
+  <p style="font-size:1.4rem; font-weight:800; letter-spacing:4px; margin:12px 0;">
+    <span class="tag tag-purple">7</span>
+    <span class="tag tag-purple">R</span>
+    <span class="tag tag-purple">7D</span>
+    <span class="tag tag-purple">S</span>
+    <span class="tag tag-purple">Я</span>
+  </p>
+</div>
+
+
+<!-- 安卓购买渠道 -->
+<div class="section-header" id="android-channel">
+  <span class="part-badge">PART 2</span>
+  <h2>安卓 — 购买渠道</h2>
+</div>
+
+<div class="card">
+  <h3>📋 安卓通用判定规则</h3>
+  <p>以下判断方法中<b>任意一项符合"其他版本"的判定标准</b>，则该设备购买渠道为"其他版本"。</p>
+</div>
+
+<div class="subsection-title">判定方法一：看系统（谷歌套件）</div>
+
+<div class="card">
+  <table class="info-table">
+    <thead>
+      <tr><th>系统特征</th><th>判定结果</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>有预装谷歌套件</td><td><span class="tag tag-orange">外版系统 → 其他版本</span></td></tr>
+      <tr><td>无预装谷歌套件</td><td><span class="tag tag-green">国行系统</span></td></tr>
+    </tbody>
+  </table>
+  <div class="alert alert-info" style="margin-top:12px;">
+    <strong>📝 注意</strong>
+    <b>预装</b>指将设备还原重新激活后，系统默认已安装的软件。<b>谷歌套件</b>包括 Google Play、Gmail、YouTube、Google Maps 等 Google 系应用。
+  </div>
+</div>
+
+<div class="subsection-title">判定方法二：看后壳</div>
+
+<table class="info-table">
+  <thead>
+    <tr><th>后壳特征</th><th>判定结果</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>无垃圾桶标志 & 无 CE 标志</td><td><span class="tag tag-red">国行</span></td></tr>
+    <tr><td>有垃圾桶标志 & CE 标志</td><td><span class="tag tag-orange">其他版本</span></td></tr>
+  </tbody>
+</table>
+
+<div class="alert alert-warning">
+  <strong>⚠️ 例外</strong>
+  <b>努比亚 Flip</b> 机型除外 — 该机型国行版本也印有垃圾桶标志，需结合其他方法判定。
+</div>
+
+
+<!-- ==================== 巩固练习 ==================== -->
+<div class="section-header" id="quiz-source">
+  <span class="part-badge">练习</span>
+  <h2>来源 — 课后小练习</h2>
+</div>
+
+<div class="quiz-card">
+  <h4>📝 练习 1</h4>
+  <p>分别说出下面两台设备的<b>来源</b>是什么？</p>
+  <ul style="margin-left:20px; margin-top:8px;">
+    <li>设备 A：购买日期/激活日期为 197X 年 → <span class="show-answer" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">点击查看答案</span><span class="answer">✅ <b>BS 机</b>（197X年日期是BS机的标志性特征）</span></li>
+    <li>设备 B：苹果型号首位为 N → <span class="show-answer" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">点击查看答案</span><span class="answer">✅ <b>官换机</b>（型号首位 N = 官换机）</span></li>
+  </ul>
+</div>
+
+<div class="quiz-card">
+  <h4>📝 练习 2</h4>
+  <p>分别说出设备 A、B、C 的<b>来源</b>：</p>
+  <ul style="margin-left:20px; margin-top:8px;">
+    <li>设备 A：三星后壳刻有 <b>S</b> → <span class="show-answer" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">点击查看答案</span><span class="answer">✅ <b>官翻机</b></span></li>
+    <li>设备 B：三星后壳刻有 <b>7D</b> → <span class="show-answer" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">点击查看答案</span><span class="answer">✅ <b>官翻机</b></span></li>
+    <li>设备 C：三星后壳刻有 <b>R</b> → <span class="show-answer" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">点击查看答案</span><span class="answer">✅ <b>官翻机</b></span></li>
+  </ul>
+  <div class="alert alert-info" style="margin-top:12px;">
+    <strong>📌 记忆口诀</strong>
+    三星后壳刻有 S、7D、R、7、Я — <b>全部都是官翻机</b>！
+  </div>
+</div>
+
+<div class="section-header" id="quiz-channel">
+  <span class="part-badge">练习</span>
+  <h2>购买渠道 — 课后小练习</h2>
+</div>
+
+<div class="quiz-card">
+  <h4>📝 练习 3</h4>
+  <p>右图设备有SIM卡限制提示，爬虫查询显示有网络锁。请问设备的<b>购买渠道</b>是什么？</p>
+  <span class="show-answer" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">点击查看答案</span>
+  <span class="answer">✅ <b>其他版本 - 有锁</b><br>
+  📌 优先级规则：有锁 &gt; 国行、港澳台、其他版本。只要满足有锁条件（网络锁/SIM卡限制），直接判定为有锁。</span>
+</div>
+
+<div class="quiz-card">
+  <h4>📝 练习 4</h4>
+  <p>右图设备后壳有打叉垃圾桶标志。请问设备的<b>购买渠道</b>是什么？</p>
+  <span class="show-answer" onclick="this.nextElementSibling.style.display='block';this.style.display='none'">点击查看答案</span>
+  <span class="answer">✅ <b>其他版本</b><br>
+  📌 后壳有垃圾桶标志 + CE标志 = 其他版本。注意检查是否为努比亚 Flip（例外机型）。</span>
+</div>
+
+
+<!-- ===== 课程总结速查表 ===== -->
+<div class="section-header">
+  <span class="part-badge">速查</span>
+  <h2>课程总结速查表</h2>
+</div>
+
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+  <div class="card">
+    <h3>🍎 苹果 — 来源速查</h3>
+    <table class="info-table">
+      <thead><tr><th>型号首位</th><th>来源</th></tr></thead>
+      <tbody>
+        <tr><td><code>M</code></td><td>零售机</td></tr>
+        <tr><td><code>N</code></td><td>官换机</td></tr>
+        <tr><td><code>F</code></td><td>权益机</td></tr>
+        <tr><td><code>3 / 5</code></td><td>展示机</td></tr>
+        <tr><td>197X年日期</td><td>BS 机</td></tr>
+        <tr><td>爬虫标注</td><td>官翻机 / BS机</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>🍎 苹果 — 渠道速查</h3>
+    <table class="info-table">
+      <thead><tr><th>型号代码</th><th>渠道</th></tr></thead>
+      <tbody>
+        <tr><td><code>CH</code></td><td>国行</td></tr>
+        <tr><td><code>TA</code></td><td>港澳台</td></tr>
+        <tr><td><code>ZP / ZA</code></td><td>可能港澳台</td></tr>
+        <tr><td><code>J / LL / KH</code></td><td>其他版本</td></tr>
+        <tr><td>有网络锁</td><td>其他版本-有锁</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>🤖 安卓 — 来源速查</h3>
+    <table class="info-table">
+      <thead><tr><th>特征</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr><td>三星后壳 M</td><td>展示机</td></tr>
+        <tr><td>华为后壳 NOT FOR SALE</td><td>展示机</td></tr>
+        <tr><td>后壳 Demo</td><td>展示机</td></tr>
+        <tr><td>有演示APP</td><td>展示机</td></tr>
+        <tr><td>三星后壳 7/R/7D/S/Я</td><td>官翻机</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>🤖 安卓 — 渠道速查</h3>
+    <table class="info-table">
+      <thead><tr><th>特征</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr><td>无谷歌套件 + 无CE/垃圾桶</td><td>国行</td></tr>
+        <tr><td>有谷歌套件</td><td>其他版本</td></tr>
+        <tr><td>有CE + 垃圾桶标志</td><td>其他版本</td></tr>
+        <tr><td>努比亚 Flip（例外）</td><td>国行也可有垃圾桶</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<footer>
+  <p>📱 来源 & 购买渠道 — 新人培训手册 v1.29</p>
+  <p style="margin-top:4px;">Save Money. Save the World. </p>
+</footer>
+
+</main>
+
+<!-- 平滑滚动 & 导航高亮 -->
+<script>
+  // 点击导航平滑滚动
+  document.querySelectorAll('nav.sidebar a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelectorAll('nav.sidebar a').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // 滚动时高亮当前章节
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id || entry.target.closest('[id]')?.id;
+        if (id) {
+          document.querySelectorAll('nav.sidebar a').forEach(l => {
+            l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+          });
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('main [id]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
